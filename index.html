@@ -109,24 +109,34 @@
 </header>
 
 <!-- STICKY NAV -->
-<nav class="sitenav">
+<nav class="sitenav" aria-label="Primary">
   <div class="sitenav-inner">
-    <a href="#about">
-      <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-      About
-    </a>
-    <a href="#publications">
-      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      Publications
-    </a>
-    <a href="#experience">
-      <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.07 15.93 0 13.36 0c-1.28 0-2.43.5-3.29 1.32L9 2.5 7.93 1.32A4.65 4.65 0 004.64 0C2.07 0 0 2.07 0 4.64c0 .48.11.92.18 1.36H0v2h1l1 14h18l1-14h1V6h-2zm-6.64-4c.64 0 1.24.25 1.69.71L12 5.66 9.95 3.71A2.34 2.34 0 0111.64 3zm-6 0c.64 0 1.24.25 1.69.71L7.5 5.35 5.95 3.71A2.34 2.34 0 017.36 3z"/></svg>
-      Experience
-    </a>
-    <a href="#education">
-      <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/></svg>
-      Education
-    </a>
+    <div class="nav-brand">Menu</div>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+      <a href="#about">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        About
+      </a>
+      <a href="#publications">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        Publications
+      </a>
+      <a href="#experience">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.07 15.93 0 13.36 0c-1.28 0-2.43.5-3.29 1.32L9 2.5 7.93 1.32A4.65 4.65 0 004.64 0C2.07 0 0 2.07 0 4.64c0 .48.11.92.18 1.36H0v2h1l1 14h18l1-14h1V6h-2zm-6.64-4c.64 0 1.24.25 1.69.71L12 5.66 9.95 3.71A2.34 2.34 0 0111.64 3zm-6 0c.64 0 1.24.25 1.69.71L7.5 5.35 5.95 3.71A2.34 2.34 0 017.36 3z"/></svg>
+        Experience
+      </a>
+      <a href="#education">
+        <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/></svg>
+        Education
+      </a>
+    </div>
+
     <div class="nav-spacer"></div>
     <div class="nav-contact">
       <span>Dhaka, Bangladesh</span>
@@ -467,6 +477,32 @@
     <div>Bangladesh Supreme Court · Dhaka, Bangladesh</div>
   </div>
 </footer>
+
+<script>
+  (() => {
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (!btn || !menu) return;
+
+    const setOpen = (open) => {
+      btn.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('is-open', open);
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    menu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
 
 </body>
 </html>

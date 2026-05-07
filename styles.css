@@ -61,15 +61,20 @@ a { overflow-wrap: anywhere; }
 ══════════════════════════════════════════ */
 .topbar {
   background: var(--navy);
-  padding: max(9px, env(safe-area-inset-top, 0px)) 48px 9px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.5);
+}
+
+.topbar-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: max(9px, env(safe-area-inset-top, 0px)) 48px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tb-left { display: flex; align-items: center; gap: 20px; }
@@ -1063,14 +1068,18 @@ header {
 .footer-base {
   background: rgba(0,0,0,0.2);
   border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 18px 48px;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   font-size: 11.5px;
   color: rgba(255,255,255,0.28);
   letter-spacing: 0.04em;
+}
+
+.footer-base-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer-base-name {
@@ -1103,7 +1112,7 @@ header {
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 960px) {
-  .topbar,
+  .topbar-inner,
   .header-inner,
   .sitenav-inner,
   .page,
@@ -1112,7 +1121,7 @@ header {
     padding-right: max(16px, env(safe-area-inset-right, 0px));
   }
 
-  .topbar {
+  .topbar-inner {
     flex-wrap: wrap;
     gap: 10px 16px;
     row-gap: 8px;
@@ -1259,7 +1268,7 @@ header {
 
   .fc { padding: 24px 20px; }
 
-  .footer-base {
+  .footer-base-inner {
     flex-direction: column;
     gap: 8px;
     text-align: center;
@@ -1270,7 +1279,7 @@ header {
 }
 
 @media (max-width: 480px) {
-  .topbar {
+  .topbar-inner {
     font-size: 11px;
     padding-bottom: 8px;
   }

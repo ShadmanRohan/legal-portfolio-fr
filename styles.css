@@ -696,13 +696,6 @@ header {
   margin-top: 2px;
 }
 
-.sb-advisory .sb-label {
-  color: var(--text-mid);
-}
-
-.sb-advisory .sb-value {
-  color: var(--text);
-}
 
 /* ══════════════════════════════════════════
    PUBLICATIONS
